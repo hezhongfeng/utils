@@ -1,13 +1,13 @@
 import { multiRequest } from './utils.js';
 
-const run = async () => {
-  console.time('test');
+const run = async (urlLength, maxNum) => {
+  console.time(`网络请求并发测试，url 数量 ${urlLength}，并发数 ${maxNum}`);
 
-  const urls = new Array(500).fill('https://www.baidu.com/');
+  const urls = new Array(urlLength).fill('https://www.baidu.com/');
 
-  await multiRequest(urls, 30);
+  await multiRequest(urls, maxNum);
 
-  console.timeEnd('test');
+  console.timeEnd(`网络请求并发测试，url 数量 ${urlLength}，并发数 ${maxNum}`);
 };
 
-run();
+run(500, 30);
